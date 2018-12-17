@@ -5,7 +5,7 @@ Für Slides und Code Beispiele, siehe [Lektion 12](../../../fhnw-syspr/blob/mast
 > *Achtung: Arbeiten Sie nicht direkt auf diesem Repository.*<br/>
 > *[Prüfen Sie die vorhandenen Forks, um das Repository für Ihre Klasse zu finden.](../../network/members)*
 
-### a) Message Queue Beispiel, 30'
+### a) Message Queues, 30'
 * Lesen Sie die folgenden [TLPI](http://man7.org/tlpi/) Beispiel Programme:<pre>
 [pmsg_create.c](http://man7.org/tlpi/code/online/book/pmsg/pmsg_create.c.html), [pmsg_getattr.c](http://man7.org/tlpi/code/online/book/pmsg/pmsg_getattr.c.html), [pmsg_unlink.c](http://man7.org/tlpi/code/online/book/pmsg/pmsg_unlink.c.html), [pmsg_send.c](http://man7.org/tlpi/code/online/book/pmsg/pmsg_send.c.html) und [pmsg_receive.c](http://man7.org/tlpi/code/online/book/pmsg/pmsg_receive.c.html)</pre>
 * Testen Sie eine Message Queue mit den Kommandos:<pre>
@@ -14,6 +14,16 @@ Für Slides und Code Beispiele, siehe [Lektion 12](../../../fhnw-syspr/blob/mast
     $ ./pmsg_send /my_mq "my msg b" 1 # >0 => Skip
     $ ./pmsg_receive /my_mq # Blockierend
     $ ./pmsg_unlink /my_mq</pre>
+
+### b) Notifications, 30'
+* Lesen Sie die folgenden [TLPI](http://man7.org/tlpi/) Beispiel Programme:<pre>
+[mq_notify_via_signal.c](http://man7.org/tlpi/code/online/book/pmsg/mq_notify_via_signal.c.html), [mq_notify_via_thread.c](http://man7.org/tlpi/code/online/book/pmsg/mq_notify_via_thread.c.html)</pre>
+Testen sie Notifications mit den Kommandos:<pre>
+$ ./pmsg_create -cx /my_mq
+$ ./mq_notify_via_signal /my_mq # bzw. _thread
+$ ./pmsg_send /my_mq "my msg a" 0 # Prio. 0
+$ ./pmsg_send /my_mq "my msg b" 0
+$ ./pmsg_unlink /my_mq</pre>
 
 ### Abgabe (optional)
 * Lokale Änderungen [committen und pushen](#git).
