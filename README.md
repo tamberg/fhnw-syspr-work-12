@@ -11,7 +11,7 @@ Für Slides und Code Beispiele, siehe [Lektion 12](../../../fhnw-syspr/blob/mast
 * Testen Sie eine Message Queue mit den Kommandos:<pre>
     $ ./pmsg_create -cx /my_mq
     $ ./pmsg_send /my_mq "my msg a" 0 # Prio. 0
-    $ ./pmsg_send /my_mq "my msg b" 1 # >0 => Skip
+    $ ./pmsg_send /my_mq "my msg b" 1 # > 0 => Skip
     $ ./pmsg_receive /my_mq # Blockierend
     $ ./pmsg_unlink /my_mq</pre>
 
