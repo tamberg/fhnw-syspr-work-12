@@ -35,6 +35,16 @@ $ ./psem_getvalue /my_sem
 $ ./psem_post /my_sem
 $ ./psem_unlink /my_sem</pre>
 
+### Shared Memory, 15'
+* Lesen Sie die folgenden [TLPI](http://man7.org/tlpi/) Beispiel Programme:<pre>
+[pshm_create.c](http://man7.org/tlpi/code/online/book/pshm/pshm_create.c.html), [pshm_write.c](http://man7.org/tlpi/code/online/book/pshm/pshm_write.c.html), [pshm_read.c](http://man7.org/tlpi/code/online/book/pshm/pshm_read.c.html) und [pshm_unlink.c](http://man7.org/tlpi/code/online/book/pshm/pshm_unlink.c.html)</pre>
+* Testen Sie Shared Memory mit den Kommandos:<pre>
+$ ./pshm_create -c /my_shm 0
+$ ls -l /dev/my_shm
+$ ./pshm_write /my_shm "hello"
+$ ./pshm_read /my_shm
+$ ./pshm_unlink /my_shm</pre>
+
 ### Abgabe (optional)
 * Lokale Änderungen [committen und pushen](#git).
 * GitHub [Issue erstellen](../../issues/new) mit "Bitte um Review, @tamberg".
