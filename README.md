@@ -18,12 +18,22 @@ Für Slides und Code Beispiele, siehe [Lektion 12](../../../fhnw-syspr/blob/mast
 ### b) Notifications, 30'
 * Lesen Sie die folgenden [TLPI](http://man7.org/tlpi/) Beispiel Programme:<pre>
 [mq_notify_via_signal.c](http://man7.org/tlpi/code/online/book/pmsg/mq_notify_via_signal.c.html), [mq_notify_via_thread.c](http://man7.org/tlpi/code/online/book/pmsg/mq_notify_via_thread.c.html)</pre>
-Testen sie Notifications mit den Kommandos:<pre>
+* Testen sie Notifications mit den Kommandos:<pre>
 $ ./pmsg_create -cx /my_mq
 $ ./mq_notify_via_signal /my_mq # bzw. _thread
 $ ./pmsg_send /my_mq "my msg a" 0 # Prio. 0
 $ ./pmsg_send /my_mq "my msg b" 0
 $ ./pmsg_unlink /my_mq</pre>
+
+### c) Semaphore, 15'
+* Lesen Sie die folgenden [TLPI](http://man7.org/tlpi/) Beispiel Programme:<pre>
+[psem_create.c](http://man7.org/tlpi/code/online/book/psem/psem_create.c.html), [psem_wait.c](http://man7.org/tlpi/code/online/book/psem/psem_wait.c.html), [psem_getvalue.c](http://man7.org/tlpi/code/online/book/psem/psem_getvalue.c.html), [psem_post.c](http://man7.org/tlpi/code/online/book/psem/psem_post.c.html) und [psem_unlink.c](http://man7.org/tlpi/code/online/book/psem/psem_unlink.c.html)</pre>
+* Testen Sie ein Semaphor mit den Kommandos:<pre>
+$ ./psem_create -c /my_sem 600 0
+$ ./psem_wait /my_sem &
+$ ./psem_getvalue /my_sem
+$ ./psem_post /my_sem
+$ ./psem_unlink /my_sem</pre>
 
 ### Abgabe (optional)
 * Lokale Änderungen [committen und pushen](#git).
