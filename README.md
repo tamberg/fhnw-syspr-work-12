@@ -5,45 +5,41 @@ Für Slides und Code Beispiele, siehe [Lektion 12](../../../fhnw-syspr/blob/mast
 > *Achtung: Arbeiten Sie nicht direkt auf diesem Repository.*<br/>
 > *[Prüfen Sie die vorhandenen Forks, um das Repository für Ihre Klasse zu finden.](../../network/members)*
 
-### a) Message Queues, 30'
-* Lesen Sie die folgenden [TLPI](http://man7.org/tlpi/) Beispiel Programme:<pre>
-[pmsg_create.c](http://man7.org/tlpi/code/online/book/pmsg/pmsg_create.c.html), [pmsg_getattr.c](http://man7.org/tlpi/code/online/book/pmsg/pmsg_getattr.c.html), [pmsg_unlink.c](http://man7.org/tlpi/code/online/book/pmsg/pmsg_unlink.c.html), [pmsg_send.c](http://man7.org/tlpi/code/online/book/pmsg/pmsg_send.c.html) und [pmsg_receive.c](http://man7.org/tlpi/code/online/book/pmsg/pmsg_receive.c.html)</pre>
-* Testen Sie eine Message Queue mit den Kommandos:<pre>
-    $ ./pmsg_create -cx /my_mq
-    $ ./pmsg_send /my_mq "my msg a" 0 # Prio. 0
-    $ ./pmsg_send /my_mq "my msg b" 1 # > 0 => Skip
-    $ ./pmsg_receive /my_mq # Blockierend
-    $ ./pmsg_unlink /my_mq</pre>
+### a) Kalender-Zeit, 15'
+* Lesen Sie das folgenden [TLPI](http://man7.org/tlpi/) Beispiel Programm:<pre>
+[calendar_time.c](http://man7.org/tlpi/code/online/book/time/calendar_time.c.html)</pre>
+* Vergleichen Sie den Output der Kommandos:<pre>
+$ ./date
+$ ./calendar_time</pre>
+* Schreiben Sie ein eigenes Programm, welches den Überlauf von Sekunden bei *mktime()* zeigt.
 
-### b) Notifications, 30'
-* Lesen Sie die folgenden [TLPI](http://man7.org/tlpi/) Beispiel Programme:<pre>
-[mq_notify_via_signal.c](http://man7.org/tlpi/code/online/book/pmsg/mq_notify_via_signal.c.html), [mq_notify_via_thread.c](http://man7.org/tlpi/code/online/book/pmsg/mq_notify_via_thread.c.html)</pre>
-* Testen sie Notifications mit den Kommandos:<pre>
-$ ./pmsg_create -cx /my_mq
-$ ./mq_notify_via_signal /my_mq # bzw. _thread
-$ ./pmsg_send /my_mq "my msg a" 0 # Prio. 0
-$ ./pmsg_send /my_mq "my msg b" 0
-$ ./pmsg_unlink /my_mq</pre>
+### b) Zeit parsen / formatieren, 15'
+* Lesen Sie das folgenden [TLPI](http://man7.org/tlpi/) Beispiel Programm:<pre>
+[strtime.c](http://man7.org/tlpi/code/online/book/time/strtime.c.html)</pre>
+* Vergleichen Sie den Output der Kommandos:<pre>
+$ ./strtime "9:39:46pm 1 Feb 2011" "%I:%M:%S%p %d %b %Y"
+$ ./strtime "9:39:46pm 1 Feb 2011" "%I:%M:%S%p %d %b %Y" "%F %T"</pre>
+* Geben Sie das Datum im [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) Format aus.
 
-### c) Semaphore, 15'
-* Lesen Sie die folgenden [TLPI](http://man7.org/tlpi/) Beispiel Programme:<pre>
-[psem_create.c](http://man7.org/tlpi/code/online/book/psem/psem_create.c.html), [psem_wait.c](http://man7.org/tlpi/code/online/book/psem/psem_wait.c.html), [psem_getvalue.c](http://man7.org/tlpi/code/online/book/psem/psem_getvalue.c.html), [psem_post.c](http://man7.org/tlpi/code/online/book/psem/psem_post.c.html) und [psem_unlink.c](http://man7.org/tlpi/code/online/book/psem/psem_unlink.c.html)</pre>
-* Testen Sie ein Semaphor mit den Kommandos:<pre>
-$ ./psem_create -c /my_sem 600 0
-$ ./psem_wait /my_sem &
-$ ./psem_getvalue /my_sem
-$ ./psem_post /my_sem
-$ ./psem_unlink /my_sem</pre>
+### c) Locale, 15'
+* Schreiben Sie ein Programm *my_locale.c*, welches die Zahl *10'000.5* in zwei verschiedenen Locales ausgibt.
+* Prüfen Sie, ob die Locale nach Programmende bleibt.
+* Falls ja, erweitern Sie ihr Programm, um am Ende die vor dem Aufruf gesetzte Locale wieder herzustellen.
 
-### d) Shared Memory, 15'
-* Lesen Sie die folgenden [TLPI](http://man7.org/tlpi/) Beispiel Programme:<pre>
-[pshm_create.c](http://man7.org/tlpi/code/online/book/pshm/pshm_create.c.html), [pshm_write.c](http://man7.org/tlpi/code/online/book/pshm/pshm_write.c.html), [pshm_read.c](http://man7.org/tlpi/code/online/book/pshm/pshm_read.c.html) und [pshm_unlink.c](http://man7.org/tlpi/code/online/book/pshm/pshm_unlink.c.html)</pre>
-* Testen Sie Shared Memory mit den Kommandos:<pre>
-$ ./pshm_create -c /my_shm 0
-$ ls -l /dev/my_shm
-$ ./pshm_write /my_shm "hello"
-$ ./pshm_read /my_shm
-$ ./pshm_unlink /my_shm</pre>
+### d) Zeitmessung, 30'
+* Schreiben Sie ein eigenes *time* Programm, *my_time.c*
+* Das zu messende Programm soll aus *argv* gelesen und mit *fork()* und *execve()* gestartet werden.
+* Der Parent Prozess wartet mit *wait()*, und bestimmt die Laufzeit, real und CPU Zeit, des Child Prozesses.
+* Die Ausgabe soll derjenigen von *time* entsprechen.
+
+### e) Timer, 15'
+* Lesen Sie das folgenden [TLPI](http://man7.org/tlpi/) Beispiel Programm:<pre>
+[real_timer.c](http://man7.org/tlpi/code/online/book/timers/real_timer.c.html)</pre>
+* Testen Sie den Timer, z.B. mit den Kommandos:<pre>
+$ ./real_timer 1 800000 1 0 # 1.8s, 1s Periode
+$ ./real_timer 3 0 # einmaliger Timer, nach 3s</pre>
+* Ändern Sie das Programm, dass der Timer CPU Zeit
+statt reale Zeit verwendet, und testen Sie den Code.
 
 ### Abgabe (optional)
 * Lokale Änderungen [committen und pushen](#git).
