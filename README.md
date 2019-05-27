@@ -13,7 +13,7 @@ $ ./date
 $ ./calendar_time</pre>
 * Schreiben Sie ein eigenes Programm, welches den Überlauf von Sekunden bei *mktime()* zeigt.
 
-### b) Zeit parsen / formatieren, 15'
+### b) Zeit parsen / formatieren, 10'
 * Lesen Sie das folgenden [TLPI](http://man7.org/tlpi/) Beispiel Programm:<pre>
 [strtime.c](http://man7.org/tlpi/code/online/book/time/strtime.c.html)</pre>
 * Vergleichen Sie den Output der Kommandos:<pre>
@@ -26,7 +26,7 @@ $ ./strtime "9:39:46pm 1 Feb 2011" "%I:%M:%S%p %d %b %Y" "%F %T"</pre>
 * Prüfen Sie, ob die Locale nach Programmende bleibt.
 * Falls ja, erweitern Sie ihr Programm, um am Ende die vor dem Aufruf gesetzte Locale wieder herzustellen.
 
-### d) Zeitmessung, 30'
+### d) Zeitmessung, 15'
 * Schreiben Sie ein eigenes *time* Programm, *my_time.c*
 * Das zu messende Programm soll aus *argv* gelesen und mit *fork()* und *execve()* gestartet werden.
 * Der Parent Prozess wartet mit *wait()*, und bestimmt die Laufzeit, real und CPU Zeit, des Child Prozesses.
