@@ -10,7 +10,7 @@ Für Slides und Code Beispiele, siehe [Lektion 12](../../../fhnw-syspr/blob/mast
     $ sudo apt-get install libncurses5-dev
     $ gcc -o NAME NAME.c -lcurses</pre>
 * Schreiben Sie ein eigenes Programm mit *ncurses*.
-* Mehr dazu in diesen Tutorials zur *curses* Bibliothek: http://heather.cs.ucdavis.edu/~matloff/UnixAndC/CLanguage/Curses.pdf und zu [Games mit ncurses](https://www.viget.com/articles/game-programming-in-c-with-the-ncurses-library/).
+* Mehr dazu in diesen Tutorials zur *curses* Bibliothek: http://heather.cs.ucdavis.edu/~matloff/UnixAndC/CLanguage/Curses.pdf und [Games mit ncurses](https://www.viget.com/articles/game-programming-in-c-with-the-ncurses-library/).
 
 ### b) Kilo.c Revisited, 15'
 * Analysieren Sie den Source Code dieses Programms: https://github.com/antirez/kilo/blob/master/kilo.c
