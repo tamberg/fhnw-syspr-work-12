@@ -5,7 +5,7 @@ Für Slides und Code Beispiele, siehe [Lektion 12](../../../fhnw-syspr/blob/mast
 > *Achtung: Arbeiten Sie nicht direkt auf diesem Repository.*<br/>
 > *[Prüfen Sie die vorhandenen Forks, um das Repository für Ihre Klasse zu finden.](../../network/members)*
 
-### a) *curses* Library, 30'
+### a) *curses* Library, 15'
 * Kompilieren und testen Sie die Beispielprogramme:<pre>
     $ sudo apt-get install libncurses5-dev
     $ gcc -o NAME NAME.c -lcurses</pre>
